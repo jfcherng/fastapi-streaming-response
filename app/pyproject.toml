@@ -1,0 +1,50 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "fastapi-streamingresponse-demo"
+version = "0.1.0"
+description = "FastAPI StreamingResponse demo"
+authors = [ "Hossain Mahmud <hossain.mahmud@gmail.com>",]
+license = "MIT"
+[[tool.poetry.packages]]
+include = "fastapi_streamingresponse_demo"
+
+[tool.isort]
+line_length = 100
+length_sort = true
+multi_line_output = "3"
+import_heading_stdlib = "Core Library"
+import_heading_firstparty = "First party"
+import_heading_thirdparty = "Third party"
+import_heading_localfolder = "Local"
+known_third_party = ["click", "fastapi", "hypercorn", "pydantic", "uvloop"]
+include_trailing_comma = true
+
+[tool.black]
+line_length = 100
+target_version = [ "py311",]
+
+[tool.poetry.dependencies]
+python = "3.11.*"
+pydantic = "^2.4.2"
+click = "^8.1.7"
+fastapi = "^0.104.1"
+hypercorn = "^0.15.0"
+uvloop = "^0.19.0"
+
+[tool.poetry.scripts]
+fastapi-streamingresponse-demo = "fastapi_streamingresponse_demo.cli:main"
+
+[tool.coverage.run]
+parallel = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+black = "^23.10.1"
+flake8 = "^6.1.0"
+pytest-black = "^0.3.12"
+pytest-flake8 = "^1.1.1"
+pytest-cov = "^4.1.0"
+pydevd-pycharm = "^233.11555.5"

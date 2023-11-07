@@ -1,0 +1,35 @@
+#include:
+#  - project: shared/ci-tools
+#    file: /gitlab-ci/terraform.yml
+
+dummy_stage_to_pass_initial_ci:
+  script:
+    - echo Remove me please!
+
+# Test
+#test:
+#  extends: .test_kaniko
+
+# Validate tf
+#validate-dev:
+#  extends: .validate-dev
+#validate-stage:
+#  extends: .validate-stage
+#validate-prod:
+#  extends: .validate-prod
+
+# Build
+#build-dev:
+#  extends: .build-dev
+#build-stage:
+#  extends: .build-stage
+#build-prod:
+#  extends: .build-prod
+
+# Deploy
+#deploy-dev:
+#  extends: .deploy-dev
+#deploy-stage:
+#  extends: .deploy-stage
+#deploy-prod:
+#  extends: .deploy-prod
