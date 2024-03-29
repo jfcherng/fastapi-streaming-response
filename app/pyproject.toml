@@ -19,7 +19,7 @@ import_heading_stdlib = "Core Library"
 import_heading_firstparty = "First party"
 import_heading_thirdparty = "Third party"
 import_heading_localfolder = "Local"
-known_third_party = ["click", "fastapi", "hypercorn", "pydantic", "uvloop"]
+known_third_party = ["click", "fastapi", "uvicorn", "pydantic", "uvloop"]
 include_trailing_comma = true
 
 [tool.black]
@@ -31,8 +31,7 @@ python = "3.11.*"
 pydantic = "^2.4.2"
 click = "^8.1.7"
 fastapi = "^0.104.1"
-hypercorn = "^0.15.0"
-uvloop = "^0.19.0"
+uvicorn = "^0.29.0"
 
 [tool.poetry.scripts]
 fastapi-streamingresponse-demo = "fastapi_streamingresponse_demo.cli:main"

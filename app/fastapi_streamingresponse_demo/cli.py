@@ -1,14 +1,11 @@
 # Core Library
-import asyncio
 import logging
 from pathlib import Path
 
 # Third party
 import click
-import uvloop
+import uvicorn
 from fastapi import FastAPI, APIRouter
-from hypercorn.config import Config
-from hypercorn.asyncio import serve
 from fastapi.staticfiles import StaticFiles
 
 # First party
@@ -27,10 +24,6 @@ def main():
 @main.command()
 @click.option("--port", type=int, default=_fallback_port, help="Port number")
 def start_service(port: int):
-    server_config = Config()
-    server_config.use_reloader = True
-    server_config.bind = f"0.0.0.0:{port}"
-
     ui = FastAPI(
         title="StreamingResponse demo",
         version="v0.1.0",
@@ -46,8 +39,7 @@ def start_service(port: int):
     register_ui_routes(ui)
     ui.mount("/", StaticFiles(directory=Path(__file__).parent / "ui", html=True), name="html+js")
 
-    uvloop.install()
-    asyncio.run(serve(ui, server_config))
+    uvicorn.run(ui, host="localhost", port=port)
 
 
 if __name__ == "__main__":
